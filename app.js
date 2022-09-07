@@ -32,6 +32,27 @@ app.get('/api/v1/tours', (req, res) => {
   });
 });
 
+app.get('/api/v1/tours/:id', (req, res) => {
+  console.log(req.params);
+
+  const id = req.params.id * 1; //converting string to number
+  const tour = tours.find((el) => el.id === id);
+  //   if (id > tours.length) {
+  if (!tour) {
+    return res.status(404).json({
+      status: 'fail',
+      message: 'Invalid ID',
+    });
+  }
+
+  res.status(200).json({
+    status: 'success',
+    data: {
+      tour: tour,
+    },
+  });
+});
+
 //Route handler for POST
 // we need middleware to put body data on the request
 app.post('/api/v1/tours', (req, res) => {
