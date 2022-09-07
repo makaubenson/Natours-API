@@ -1,11 +1,14 @@
 {
   "name": "natours",
   "version": "1.0.0",
-  "description": "## Express.js",
+  "description": "Node.js, MongoDB, API",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Benson Makau",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
 }
