@@ -28,4 +28,7 @@
 
 ![rest5](https://user-images.githubusercontent.com/59168713/188863004-5f50bfb3-118a-473f-9ffb-1585f4b3e623.png)
 
-> > > > > > > 128ed8d4ec1048ce4867e67b61d0ac1a36a36145
+### Middleware
+
+- Middleware is software that lies between an operating system and the applications running on it. Essentially functioning as hidden translation layer, middleware enables communication and data management for distributed applications.
+- Stands between request and response.
