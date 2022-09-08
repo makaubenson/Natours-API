@@ -4,7 +4,7 @@
   "description": "Node.js, MongoDB, API",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon server.js"
   },
   "author": "Benson Makau",
   "license": "MIT",

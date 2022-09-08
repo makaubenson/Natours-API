@@ -96,3 +96,5 @@ app.route('/').get(getAllUsers).post(createUser);
 
 app.route('/:id').get(getUser).patch(updateUser).delete(deleteUser);
 ```
+
+- Param Middleware is one that only runs for certain parameters. i.e it runs when we have a certain parameter in our url.
