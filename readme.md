@@ -51,12 +51,22 @@
 ### Creating our own middleware
 
 - This middleware applies to every request since we havent specified any route.
+- Eaxmple 1
 
 ```
 app.use((req, res, next) => {
   console.log('Hello from the middleware!!');
   // We need to call next() to avoid Request-Response cycle being stuck
   next();
+});
+```
+
+- Example 2
+
+```
+app.use((req, res, next) => {
+  req.requestTime = new Date().toISOString();
+  next(); //call next middleware in the callstack
 });
 ```
 
