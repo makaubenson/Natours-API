@@ -98,3 +98,8 @@ app.route('/:id').get(getUser).patch(updateUser).delete(deleteUser);
 ```
 
 - Param Middleware is one that only runs for certain parameters. i.e it runs when we have a certain parameter in our url.
+
+### Environment Variables
+
+- Global Variables used to define the environment in which node app is running.
+- `app.get('env')` - gives us the environment variables

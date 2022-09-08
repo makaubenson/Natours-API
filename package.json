@@ -2,13 +2,15 @@
   "name": "natours",
   "version": "1.0.0",
   "description": "Node.js, MongoDB, API",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start:dev": "nodemon server.js",
+    "start:prod": "NODE_ENV=production nodemon server.js"
   },
   "author": "Benson Makau",
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^16.0.2",
     "express": "^4.18.1",
     "morgan": "^1.10.0"
   }
