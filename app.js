@@ -6,6 +6,19 @@ const app = express();
 
 app.use(express.json()); //middleware
 
+//Creating our own middleware
+app.use((req, res, next) => {
+  console.log('Hello from the middleware!!');
+  // We need to call next() to avoid Request-Response cycle being stuck
+  next();
+});
+
+app.use((req, res, next) => {
+  req.requestTime = new Date().toISOString();
+
+  next(); //call next middleware in the callstack
+});
+
 //Routing
 // app.get('/', (req, res) => {
 //   res
@@ -22,8 +35,10 @@ const tours = JSON.parse(
 );
 
 const getAllTours = (req, res) => {
+  console.log(req.requestTime);
   res.status(200).json({
     status: 'success',
+    requestedAt: req.requestTime,
     results: tours.length,
     data: {
       //   tours: tours,

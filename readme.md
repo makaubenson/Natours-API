@@ -44,3 +44,20 @@
 - Request and Response objects created in the beggining go through each middleware.
 - The last middleware function, its ussually a router handler, thus we dont call the next() function to move to next middleware instead we send response data back to the client, thus finishing Request-Response cycle.
 - ![image]
+
+- For us to use middleware in node.js, we rely on `use()` function.
+- e.g `app.use(express.json());`
+
+### Creating our own middleware
+
+- This middleware applies to every request since we havent specified any route.
+
+```
+app.use((req, res, next) => {
+  console.log('Hello from the middleware!!');
+  // We need to call next() to avoid Request-Response cycle being stuck
+  next();
+});
+```
+
+- Order of code is very important in express.
