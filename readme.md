@@ -32,3 +32,15 @@
 
 - Middleware is software that lies between an operating system and the applications running on it. Essentially functioning as hidden translation layer, middleware enables communication and data management for distributed applications.
 - Stands between request and response.
+
+#### Middleware and the Request-Response Cycle
+
+- In express everything is middleware.
+- Example of middlewares
+- ![image]
+- Middleware that appears first in code, is executed before the one that appears later.
+- Order of code is important in express.
+- At the end of each middleware function, next() function is called, allowing for execution of the next middleware.
+- Request and Response objects created in the beggining go through each middleware.
+- The last middleware function, its ussually a router handler, thus we dont call the next() function to move to next middleware instead we send response data back to the client, thus finishing Request-Response cycle.
+- ![image]
