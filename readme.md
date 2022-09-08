@@ -71,3 +71,28 @@ app.use((req, res, next) => {
 ```
 
 - Order of code is very important in express.
+
+### Creating and Mounting Multiple Routers
+
+```
+const tourRouter = express.Router();
+const userRouter = express.Router();
+
+app.use('/api/v1/tours', tourRouter);
+app.use('/api/v1/users', userRouter);
+```
+
+```
+tourRouter.route('/').get(getAllTours).post(createTour);
+
+tourRouter
+  .route('/:id')
+  .get(getTour)
+  .post(createTour)
+  .patch(updateTour)
+  .delete(deleteTour);
+
+app.route('/').get(getAllUsers).post(createUser);
+
+app.route('/:id').get(getUser).patch(updateUser).delete(deleteUser);
+```
