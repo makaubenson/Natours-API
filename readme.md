@@ -241,3 +241,22 @@ db.tours.updateOne({name: "The Snow Adventurer"}, {$set: {price: 597}})
 ```
 db.tours.updateMany({price: {$gt: 500},rating: {$gte: 4.8}},{$set: {premium: true}})
 ```
+
+- To replace contents of a document, we use `replaceOne()`
+
+### deleting documents
+
+- Deleting multiple documents.
+
+```
+db.tours.deleteMany({rating: {$lt: 4.8}})
+```
+
+- Delete one document
+
+```
+db.tours.deleteOne({rating: {$lt: 4.8}})
+```
+
+- Delete all documents
+- `db.tours.deleteMany({})` - parsing empty object.
