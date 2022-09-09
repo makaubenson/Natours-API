@@ -226,3 +226,18 @@ db.tours.find({$or: [ {price: {$gt: 500}},{rating:{$gte: 4.8}} ]},{name: 1})
   }
 ]
 ```
+
+### Update Documents
+
+- Updating single document
+
+```
+db.tours.updateOne({name: "The Snow Adventurer"}, {$set: {price: 597}})
+
+```
+
+- Updating many/multiple documents
+
+```
+db.tours.updateMany({price: {$gt: 500},rating: {$gte: 4.8}},{$set: {premium: true}})
+```
