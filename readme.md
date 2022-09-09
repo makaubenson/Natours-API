@@ -158,3 +158,12 @@ tours
 ```
 
 - Quit mongo shell - `quit()`
+
+### Creating New Documents
+
+- Creating multiple documents.
+
+```
+db.tours.insertMany([{name:"The Sea Explorer",price:497,rating:4.8},{name:"The Snow Adventurer", price: 997, rating: 4.9,difficulty:"easy"}])
+
+```
