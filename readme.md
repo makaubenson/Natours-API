@@ -189,7 +189,7 @@ db.tours.find({price: {$lte: 500}})
 ```
 
 - `$` is preserved for mongo operators
-- `lte` stands for less than
+- `lte` stands for less than or equal to
 
 #### Doing multiple searches/queries
 
@@ -199,8 +199,30 @@ db.tours.find({price: {$lte: 500},rating: {$gte: 4.8}})
 
 - The above query works if both conditions are true, (AND query)
 
-#### Queryig with OR Operator
+#### Querying with OR Operator
 
 ```
 db.tours.find({$or: [ {price: {$lt: 500}},{rating:{$gte: 4.8}} ]})
+```
+
+- `lt` - less than
+- `gte` greater than or equal to
+
+```
+db.tours.find({$or: [ {price: {$gt: 500}},{rating:{$gte: 4.8}} ]},{name: 1})
+```
+
+- The command above only displays the `name`.
+
+```
+[
+  {
+    _id: ObjectId("631aeda0d5dbcff2c6a727af"),
+    name: 'The Sea Explorer'
+  },
+  {
+    _id: ObjectId("631aeda0d5dbcff2c6a727b0"),
+    name: 'The Snow Adventurer'
+  }
+]
 ```
