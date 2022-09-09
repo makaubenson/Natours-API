@@ -260,3 +260,33 @@ db.tours.deleteOne({rating: {$lt: 4.8}})
 
 - Delete all documents
 - `db.tours.deleteMany({})` - parsing empty object.
+
+### Connecting express app to mongoDB
+
+```
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+
+const app = require('./app');
+
+dotenv.config({ path: './config.env' });
+// console.log(app.get('env'));
+// console.log(process.env);
+
+const DB = process.env.DATABASE.replace(
+  '<PASSWORD>',
+  process.env.DATABASE_PASSWORD
+);
+
+// .connect(process.env.DATABASE_LOCAL, {
+mongoose
+  .connect(DB, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+  })
+  .then(() => {
+    // console.log(con);
+    console.log('DB Connection Successful');
+  });
+```
