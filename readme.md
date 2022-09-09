@@ -180,3 +180,27 @@ db.tours.find({difficulty:"easy"})
 ```
 
 - `{name: "The Forest Hiker"} and {difficulty:"easy"}` are the search criteria.
+
+### Finding values less than x
+
+```
+db.tours.find({price: {$lte: 500}})
+
+```
+
+- `$` is preserved for mongo operators
+- `lte` stands for less than
+
+#### Doing multiple searches/queries
+
+```
+db.tours.find({price: {$lte: 500},rating: {$gte: 4.8}})
+```
+
+- The above query works if both conditions are true, (AND query)
+
+#### Queryig with OR Operator
+
+```
+db.tours.find({$or: [ {price: {$lt: 500}},{rating:{$gte: 4.8}} ]})
+```
