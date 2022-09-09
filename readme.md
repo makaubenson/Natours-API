@@ -101,7 +101,6 @@ app.route('/:id').get(getUser).patch(updateUser).delete(deleteUser);
 
 ![middleware1](https://user-images.githubusercontent.com/59168713/189285317-b2d23fa8-2f24-474d-a88a-353df4e38a5a.png)
 
-
 ![middleware2](https://user-images.githubusercontent.com/59168713/189285328-c9481983-2989-4d52-ab1e-093c31732bfb.png)
 
 ### Environment Variables
@@ -109,6 +108,53 @@ app.route('/:id').get(getUser).patch(updateUser).delete(deleteUser);
 - Global Variables used to define the environment in which node app is running.
 - `app.get('env')` - gives us the environment variables
 
+## MongoDB
 
+- Starting mongo shell `mongosh`
+- Create new DB `use natours-test` or switch to new DB.
+- Creating a collection (`tours`) and inserting data in BSON format
 
+```
+db.tours.insertOne({name:"The Forest Hiker",price: 297,rating:4.7})
 
+```
+
+- viewing contents of a collection
+
+```
+db.tours.find()
+```
+
+- Output
+
+```
+[
+  {
+    _id: ObjectId("631aea8a871f5067afc4c3ef"),
+    name: 'The Forest Hiker',
+    price: 297,
+    rating: 4.7
+  }
+]
+
+```
+
+- `ObjectId("631aea8a871f5067afc4c3ef")` unique identifier of the above object.
+- `show dbs` - shows all the databases
+
+```
+admin          40.00 KiB
+config        108.00 KiB
+local          72.00 KiB
+natours-test   40.00 KiB
+
+```
+
+- Show collections(similar to tables) - `show collections`
+
+```
+natours-test> show collections
+tours
+```
+
+- Quit mongo shell - `quit()`
