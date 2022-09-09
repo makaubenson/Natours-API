@@ -174,4 +174,9 @@ db.tours.insertMany([{name:"The Sea Explorer",price:497,rating:4.8},{name:"The S
 db.tours.find({name: "The Forest Hiker"})
 ```
 
-- `{name: "The Forest Hiker"}` is the search criteria.
+```
+db.tours.find({difficulty:"easy"})
+
+```
+
+- `{name: "The Forest Hiker"} and {difficulty:"easy"}` are the search criteria.
