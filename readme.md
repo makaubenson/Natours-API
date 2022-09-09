@@ -265,9 +265,6 @@ db.tours.deleteOne({rating: {$lt: 4.8}})
 
 ```
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-
-const app = require('./app');
 
 dotenv.config({ path: './config.env' });
 // console.log(app.get('env'));
