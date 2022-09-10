@@ -8,7 +8,7 @@ dotenv.config({ path: './config.env' }); //Importing environment variables
 // console.log(app.get('env'));
 // console.log(process.env);
 
-//
+//Database Connection
 const DB = process.env.DATABASE.replace(
   '<PASSWORD>',
   process.env.DATABASE_PASSWORD
