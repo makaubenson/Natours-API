@@ -108,7 +108,7 @@ app.route('/:id').get(getUser).patch(updateUser).delete(deleteUser);
 - Global Variables used to define the environment in which node app is running.
 - `app.get('env')` - gives us the environment variables
 
-## MongoDB
+## MongoDB (No-SQL DB)
 
 - Starting mongo shell `mongosh`
 - Create new DB `use natours-test` or switch to new DB.
@@ -181,7 +181,7 @@ db.tours.find({difficulty:"easy"})
 
 - `{name: "The Forest Hiker"} and {difficulty:"easy"}` are the search criteria.
 
-### Finding values less than x
+### Finding values `less than` and ``less than or equal to`
 
 ```
 db.tours.find({price: {$lte: 500}})
