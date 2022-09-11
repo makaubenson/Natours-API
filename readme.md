@@ -261,6 +261,16 @@ db.tours.deleteOne({rating: {$lt: 4.8}})
 - Delete all documents
 - `db.tours.deleteMany({})` - parsing empty object.
 
+![mongo1](https://user-images.githubusercontent.com/59168713/189543767-0ed1c276-b31c-4e66-9fae-1f41a34e7471.png)
+
+
+
+![mongo2](https://user-images.githubusercontent.com/59168713/189543786-0a94bf86-7069-4dba-acbb-6bd41723e466.png)
+
+
+![mongo3](https://user-images.githubusercontent.com/59168713/189543795-cc57a0a5-4323-4bf6-9e41-eae58859073d.png)
+
+
 ### Connecting express app to mongoDB
 
 ```
@@ -287,3 +297,9 @@ mongoose
     console.log('DB Connection Successful');
   });
 ```
+
+
+
+
+![mongoose](https://user-images.githubusercontent.com/59168713/189543806-7d34cad8-612e-41c3-a801-f76009447024.png)
+
