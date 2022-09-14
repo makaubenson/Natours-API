@@ -1,5 +1,5 @@
 const express = require('express');
-const tourController = require('./../controllers/tourController');
+const tourController = require('../controllers/tourController');
 
 //Method 2
 // const {
@@ -13,7 +13,7 @@ const tourController = require('./../controllers/tourController');
 const router = express.Router();
 
 //Param Middleware
-router.param('id', tourController.checkID);
+// router.param('id', tourController.checkID);
 
 //Method 1
 router
