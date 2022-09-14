@@ -33,24 +33,34 @@ const Tour = require('../models/tourModel');
 //Handlers
 exports.getAllTours = async (req, res) => {
   try {
-    console.log(req.query);
+    //BUILD QUERY
+    const queryObj = { ...req.query };
+
+    const excludedFields = ['page', 'sort', 'limit', 'fields'];
+
+    excludedFields.forEach((el) => delete queryObj[el]);
+
+    console.log(req.query, queryObj, `REsult!!!!!!!!!!!!!!!!!!!!!!`);
 
     //Ways of Querying Data
 
     //1) Method 1
     //Reading all the documents
-    // const tours = await Tour.find({
-    //   duration: 5,
-    //   difficulty: 'easy',
-    // });
+    // const query = await Tour.find(queryObj);
 
     //2) Method 2: Using special mongoose methods
-    const tours = await Tour.find()
-      .where('duration')
-      .equals(5)
-      .where('difficulty')
-      .equals('easy');
+    // const query = await Tour.find()
+    //   .where('duration')
+    //   .equals(5)
+    //   .where('difficulty')
+    //   .equals('easy');
 
+    const query = Tour.find(queryObj);
+
+    //EXECUTE QUERY
+    const tours = await query;
+
+    //SEND RESPONSE
     res.status(200).json({
       status: 'success',
       results: tours.length,
