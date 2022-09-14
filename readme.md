@@ -263,6 +263,8 @@ db.tours.deleteOne({rating: {$lt: 4.8}})
 
 ### Connecting express app to mongoDB
 
+- Lets use the most popular mongoDB Driver, `mongoose`
+
 ```
 const mongoose = require('mongoose');
 
@@ -287,3 +289,7 @@ mongoose
     console.log('DB Connection Successful');
   });
 ```
+
+- We create a model in mongoose in order to create documents using it and also query, update and delete thse documents, i.e perform CRUD(CREATE,READ,UPDATE,DELETE) operations.
+
+- To create a model we need a schema. We create models out of mongoose schema.
