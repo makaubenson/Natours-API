@@ -33,8 +33,23 @@ const Tour = require('../models/tourModel');
 //Handlers
 exports.getAllTours = async (req, res) => {
   try {
+    console.log(req.query);
+
+    //Ways of Querying Data
+
+    //1) Method 1
     //Reading all the documents
-    const tours = await Tour.find();
+    // const tours = await Tour.find({
+    //   duration: 5,
+    //   difficulty: 'easy',
+    // });
+
+    //2) Method 2: Using special mongoose methods
+    const tours = await Tour.find()
+      .where('duration')
+      .equals(5)
+      .where('difficulty')
+      .equals('easy');
 
     res.status(200).json({
       status: 'success',
