@@ -20,15 +20,15 @@ const Tour = require('../models/tourModel');
 //Check if body contains the name and price property
 //if not, send back 400(Bad Request)
 //Add it to the post handler stack
-exports.checkBody = (req, res, next) => {
-  if (!req.body.name || !req.body.price) {
-    return res.status(400).json({
-      status: 'fail',
-      message: 'Missing name or price',
-    });
-  }
-  next();
-};
+// exports.checkBody = (req, res, next) => {
+//   if (!req.body.name || !req.body.price) {
+//     return res.status(400).json({
+//       status: 'fail',
+//       message: 'Missing name or price',
+//     });
+//   }
+//   next();
+// };
 
 //Handlers
 exports.getAllTours = (req, res) => {
@@ -47,7 +47,7 @@ exports.getAllTours = (req, res) => {
 exports.getTour = (req, res) => {
   console.log(req.params);
 
-  const id = req.params.id * 1; //converting string to number
+  // const id = req.params.id * 1; //converting string to number
   // const tour = tours.find((el) => el.id === id);
 
   // res.status(200).json({
@@ -58,13 +58,28 @@ exports.getTour = (req, res) => {
   // });
 };
 
-exports.createTour = (req, res) => {
-  res.status(201).json({
-    status: 'success',
-    // data: {
-    //   tour: newTour,
-    // },
-  });
+exports.createTour = async (req, res) => {
+  try {
+    //Method 1
+    // const newTour = new Tour({});
+    // newTour.save();
+
+    //Method 2
+    const newTour = await Tour.create(req.body);
+
+    res.status(201).json({
+      status: 'success',
+      data: {
+        tour: newTour,
+      },
+    });
+  } catch (err) {
+    // console.log(err);
+    res.status(400).json({
+      status: 'fail',
+      message: `Invalid Data sent!`,
+    });
+  }
 };
 
 exports.updateTour = (req, res) => {
