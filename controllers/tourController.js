@@ -31,17 +31,25 @@ const Tour = require('../models/tourModel');
 // };
 
 //Handlers
-exports.getAllTours = (req, res) => {
-  console.log(req.requestTime);
-  res.status(200).json({
-    status: 'success',
-    requestedAt: req.requestTime,
-    // results: tours.length,
-    // data: {
-    //   //   tours: tours,
-    //   tours,
-    // },
-  });
+exports.getAllTours = async (req, res) => {
+  try {
+    //Reading all the documents
+    const tours = await Tour.find();
+
+    res.status(200).json({
+      status: 'success',
+      results: tours.length,
+      data: {
+        //   tours: tours,
+        tours,
+      },
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: err,
+    });
+  }
 };
 
 exports.getTour = (req, res) => {
