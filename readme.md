@@ -263,13 +263,9 @@ db.tours.deleteOne({rating: {$lt: 4.8}})
 
 ![mongo1](https://user-images.githubusercontent.com/59168713/189543767-0ed1c276-b31c-4e66-9fae-1f41a34e7471.png)
 
-
-
 ![mongo2](https://user-images.githubusercontent.com/59168713/189543786-0a94bf86-7069-4dba-acbb-6bd41723e466.png)
 
-
 ![mongo3](https://user-images.githubusercontent.com/59168713/189543795-cc57a0a5-4323-4bf6-9e41-eae58859073d.png)
-
 
 ### Connecting express app to mongoDB
 
@@ -300,14 +296,8 @@ mongoose
   });
 ```
 
-<<<<<<< HEAD
 - We create a model in mongoose in order to create documents using it and also query, update and delete thse documents, i.e perform CRUD(CREATE,READ,UPDATE,DELETE) operations.
 
 - To create a model we need a schema. We create models out of mongoose schema.
-=======
-
-
 
 ![mongoose](https://user-images.githubusercontent.com/59168713/189543806-7d34cad8-612e-41c3-a801-f76009447024.png)
-
->>>>>>> 71b542681d6b93e63c2c1ed00975f2854dfac4ea
