@@ -33,29 +33,22 @@ const Tour = require('../models/tourModel');
 //Handlers
 exports.getAllTours = async (req, res) => {
   try {
+    console.log(req.query, 'BENSON');
     //BUILD QUERY
+    //1)Filtering
     const queryObj = { ...req.query };
-
     const excludedFields = ['page', 'sort', 'limit', 'fields'];
-
     excludedFields.forEach((el) => delete queryObj[el]);
 
-    console.log(req.query, queryObj, `REsult!!!!!!!!!!!!!!!!!!!!!!`);
+    //2)Advanced Filtering
+    let queryStr = JSON.stringify(queryObj);
+    queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
+    console.log(JSON.parse(queryStr), 'MAKAU');
+    //{difficulty: 'easy',duration:{$gte: 5}}
+    //{difficulty: 'easy',duration:{gte: 5}}
+    //gte,gt,lte,lt
 
-    //Ways of Querying Data
-
-    //1) Method 1
-    //Reading all the documents
-    // const query = await Tour.find(queryObj);
-
-    //2) Method 2: Using special mongoose methods
-    // const query = await Tour.find()
-    //   .where('duration')
-    //   .equals(5)
-    //   .where('difficulty')
-    //   .equals('easy');
-
-    const query = Tour.find(queryObj);
+    const query = Tour.find(JSON.parse(queryStr));
 
     //EXECUTE QUERY
     const tours = await query;
