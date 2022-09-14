@@ -35,20 +35,30 @@ exports.getAllTours = async (req, res) => {
   try {
     console.log(req.query, 'BENSON');
     //BUILD QUERY
-    //1)Filtering
+    //1a)Filtering
     const queryObj = { ...req.query };
     const excludedFields = ['page', 'sort', 'limit', 'fields'];
     excludedFields.forEach((el) => delete queryObj[el]);
 
-    //2)Advanced Filtering
+    //1b)Advanced Filtering
     let queryStr = JSON.stringify(queryObj);
     queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
-    console.log(JSON.parse(queryStr), 'MAKAU');
+    // console.log(JSON.parse(queryStr), 'MAKAU');
     //{difficulty: 'easy',duration:{$gte: 5}}
     //{difficulty: 'easy',duration:{gte: 5}}
     //gte,gt,lte,lt
 
-    const query = Tour.find(JSON.parse(queryStr));
+    let query = Tour.find(JSON.parse(queryStr));
+
+    //2)Sorting
+    if (req.query.sort) {
+      const sortBy = req.query.sort.split(',').join(' ');
+      // console.log(sortBy);
+      query = query.sort(sortBy);
+      //sort('price ratingsAverage')
+    } else {
+      query = query.sort('-createdAt');
+    }
 
     //EXECUTE QUERY
     const tours = await query;

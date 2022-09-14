@@ -311,3 +311,27 @@ mongoose
 ![mvc1](https://user-images.githubusercontent.com/59168713/190090907-92be2eb1-fe9a-496f-810f-2ab8bd3c4ef1.png)
 
 ![mvc2](https://user-images.githubusercontent.com/59168713/190090976-cb1e0a72-3e78-4544-992f-4f83a3665f01.png)
+
+### Filtering
+
+- sample url for filtering
+
+```
+http://127.0.0.1:3000/api/v1/tours?difficulty=easy&duration[gte]=5&price[lt]=1500
+```
+
+### Sorting
+
+- Sorting in Ascending Order
+
+```
+http://127.0.0.1:3000/api/v1/tours?sort=price
+http://127.0.0.1:3000/api/v1/tours?sort=duration
+```
+
+- Sorting in descending Order
+
+```
+http://127.0.0.1:3000/api/v1/tours?sort=-price
+http://127.0.0.1:3000/api/v1/tours?sort=-duration
+```
