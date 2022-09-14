@@ -307,3 +307,7 @@ mongoose
 - Model layer is concerned with the application layer and the business logic.
 - Controller layer - Function of the controller is to handler the applications' requests, interact with models and send response to clients. This is basically known as the `application logic`.
 - The View Layer - is necessary if we have GUI in our app. (Presentation Logic)
+
+![mvc1](https://user-images.githubusercontent.com/59168713/190090907-92be2eb1-fe9a-496f-810f-2ab8bd3c4ef1.png)
+
+![mvc2](https://user-images.githubusercontent.com/59168713/190090976-cb1e0a72-3e78-4544-992f-4f83a3665f01.png)
