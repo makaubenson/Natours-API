@@ -301,3 +301,9 @@ mongoose
 - To create a model we need a schema. We create models out of mongoose schema.
 
 ![mongoose](https://user-images.githubusercontent.com/59168713/189543806-7d34cad8-612e-41c3-a801-f76009447024.png)
+
+### MVC(Model,View,Controller) Architecture
+
+- Model layer is concerned with the application layer and the business logic.
+- Controller layer - Function of the controller is to handler the applications' requests, interact with models and send response to clients. This is basically known as the `application logic`.
+- The View Layer - is necessary if we have GUI in our app. (Presentation Logic)
