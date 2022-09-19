@@ -340,6 +340,7 @@ http://127.0.0.1:3000/api/v1/tours?sort=-duration
 
 `http://127.0.0.1:3000/api/v1/tours?fields=name,duration,difficulty,price`
 
+
 - `select` in the case below makes `createdAt` unavailable to the client on fetching the api.
 
 ```
