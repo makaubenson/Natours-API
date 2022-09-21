@@ -350,3 +350,19 @@ http://127.0.0.1:3000/api/v1/tours?sort=-duration
     select: false,
   },
 ```
+### Aliasing
+
+- Create the route
+```
+router.route('/top-5-cheap').get(tourController.aliasTopTours,tourController.getAllTours)
+```
+
+- Create the handler (using middleware)
+```
+exports.aliasTopTours = (req,res,next) => {
+req.query.limit = '5';
+req.query.sort = '-ratingsAverage,price';
+req.query.fields = 'name,price,ratingAverage,summary,difficulty';
+next();
+}
+```
