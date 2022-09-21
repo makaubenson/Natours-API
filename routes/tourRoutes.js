@@ -15,6 +15,8 @@ const router = express.Router();
 //Param Middleware
 // router.param('id', tourController.checkID);
 
+router.route('/top-5-cheap').get(tourController.aliasTopTours,tourController.getAllTours)
+
 //Method 1
 router
   .route('/')
