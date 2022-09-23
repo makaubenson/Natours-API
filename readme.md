@@ -340,7 +340,6 @@ http://127.0.0.1:3000/api/v1/tours?sort=-duration
 
 `http://127.0.0.1:3000/api/v1/tours?fields=name,duration,difficulty,price`
 
-
 - `select` in the case below makes `createdAt` unavailable to the client on fetching the api.
 
 ```
@@ -350,14 +349,17 @@ http://127.0.0.1:3000/api/v1/tours?sort=-duration
     select: false,
   },
 ```
+
 ### Aliasing
 
 - Create the route
+
 ```
 router.route('/top-5-cheap').get(tourController.aliasTopTours,tourController.getAllTours)
 ```
 
 - Create the handler (using middleware)
+
 ```
 exports.aliasTopTours = (req,res,next) => {
 req.query.limit = '5';
@@ -366,3 +368,9 @@ req.query.fields = 'name,price,ratingAverage,summary,difficulty';
 next();
 }
 ```
+
+### Aggregation pipeline
+
+- Its a powerful and useful mongodb framework for data aggregation.
+- An aggregation pipeline consists of one or more stages that process documents: Each stage performs an operation on the input documents. For example, a stage can filter documents, group documents, and calculate values. The documents that are output from a stage are passed to the next stage.
+- we can use it to calculate averages, min and max values, distances and many more.
