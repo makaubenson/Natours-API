@@ -487,3 +487,64 @@ http://127.0.0.1:3000/api/v1/tours/monthly-plan/:year
 ### $project
 
 - Passes along the documents with the requested fields to the next stage in the pipeline. The specified fields can be existing fields from the input documents or newly computed fields.
+
+```
+exports.getMonthlyPlan = async (req, res) => {
+  try {
+    const year = req.params.year * 1; //2021
+    const plan = await Tour.aggregate([
+      //unwind
+      {
+        $unwind: '$startDates',
+      },
+      //match
+      {
+        $match: {
+          startDates: {
+            $gte: new Date(`${year}-01-01`),
+            $lte: new Date(`${year}-12-31`),
+          },
+        },
+      },
+      //group
+      {
+        $group: {
+          _id: { $month: '$startDates' }, //group by month
+          numTourStats: { $sum: 1 },
+          tours: { $push: '$name' },
+        },
+      },
+      {
+        $addFields: { month: '$_id' },
+      },
+
+      //project
+      {
+        $project: {
+          _id: 0, //works with 1 and 0, for 0 it means _id wont showup
+        },
+      },
+      //sorting
+      {
+        $sort: { numTourStats: -1 },
+      },
+      //limit
+      {
+        $limit: 12, //limit to 12 outputs
+      },
+    ]);
+
+    res.status(200).json({
+      status: 'success',
+      data: {
+        plan,
+      },
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: err,
+    });
+  }
+};
+```
