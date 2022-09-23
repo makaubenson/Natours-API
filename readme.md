@@ -581,3 +581,30 @@ tourSchema.virtual('durationWeeks').get(function () {
 ### Document Middleware
 
 - Middleware that can act on the currently processed documents.
+- we can have middleware run before and after certain event.
+- runs only for `.save() and .create()`
+- we can have multiple pre and post `document middlewares`.
+
+#### pre middleware: will run before an actual event
+
+- The callback will be called before an actual document is saved on the database.
+
+```
+tourSchema.pre('save', function (next) {
+  // console.log(this);
+  //this at this point is the currently processed document
+  this.slug = slugify(this.name, { lower: true });
+  next();
+});
+```
+
+#### post middleware: will run after an actual event
+
+- Executed after all pre middlewares are executed
+
+```
+ tourSchema.post('save', function (doc, next) {
+ console.log(doc);
+ next();
+ });
+```

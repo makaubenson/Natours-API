@@ -80,6 +80,17 @@ tourSchema.pre('save', function (next) {
   this.slug = slugify(this.name, { lower: true });
   next();
 });
+// tourSchema.pre('save', function (next) {
+//   console.log('Will save document');
+//   next();
+// });
+
+//post middleware: will run after an actual event
+//executed after all pre middlewares are executed
+// tourSchema.post('save', function (doc, next) {
+//   console.log(doc);
+//   next();
+// });
 
 //Create a model out of the schema above.
 const Tour = mongoose.model('Tour', tourSchema);
