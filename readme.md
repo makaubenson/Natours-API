@@ -548,3 +548,27 @@ exports.getMonthlyPlan = async (req, res) => {
   }
 };
 ```
+
+### Virtual Properties
+
+- In Mongoose, a `virtual` is a property that is `NOT` stored in MongoDB. Virtuals are typically used for computed properties on documents.
+- These are fields that we can define in our schema though we cant save them on DB.
+- we must explicitly define in our schema that we want virtual properties in our output.
+- Defining a virtual property
+
+```
+tourSchema.virtual('durationWeeks').get(function () {
+  return this.duration / 7;
+});
+
+```
+
+- We also need to explicitly define in our schema that we need virtuals displayed in our output.
+- You add the `options` below as the second argument for `const tourSchema = new mongoose.Schema()`.
+
+```
+ {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
+  }
+```
