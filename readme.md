@@ -572,3 +572,12 @@ tourSchema.virtual('durationWeeks').get(function () {
     toObject: { virtuals: true },
   }
 ```
+
+### Mongoose Middleware
+
+- Mongoose has 4 types of middleware: `document middleware`, `model middleware`, `aggregate middleware`, and `query middleware`.
+- We define middleware on schema.
+
+### Document Middleware
+
+- Middleware that can act on the currently processed documents.

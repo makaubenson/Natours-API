@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const slugify = require('slugify');
 
 //Basic Tour Schema
 const tourSchema = new mongoose.Schema(
@@ -9,6 +10,7 @@ const tourSchema = new mongoose.Schema(
       unique: true,
       trim: true,
     },
+    slug: String,
     duration: {
       type: Number,
       required: [true, 'A tour must have a duration'],
@@ -64,6 +66,19 @@ const tourSchema = new mongoose.Schema(
 //virtual property
 tourSchema.virtual('durationWeeks').get(function () {
   return this.duration / 7;
+});
+
+//Middleware
+
+//DOCUMENT MIDDLEWARE: runs before .save() and .create()
+
+//pre middleware: will run before an actual event
+//the callback will be called before an actual document is saved on the database
+tourSchema.pre('save', function (next) {
+  // console.log(this);
+  //this at this point is the currently processed document
+  this.slug = slugify(this.name, { lower: true });
+  next();
 });
 
 //Create a model out of the schema above.
