@@ -578,14 +578,14 @@ tourSchema.virtual('durationWeeks').get(function () {
 - Mongoose has 4 types of middleware: `document middleware`, `model middleware`, `aggregate middleware`, and `query middleware`.
 - We define middleware on schema.
 
-### Document Middleware
+#### Document Middleware
 
 - Middleware that can act on the currently processed documents.
 - we can have middleware run before and after certain event.
 - runs only for `.save() and .create()`
 - we can have multiple pre and post `document middlewares`.
 
-#### pre middleware: will run before an actual event
+##### pre middleware: will run before an actual event
 
 - The callback will be called before an actual document is saved on the database.
 
@@ -598,7 +598,7 @@ tourSchema.pre('save', function (next) {
 });
 ```
 
-#### post middleware: will run after an actual event
+##### post middleware: will run after an actual event
 
 - Executed after all pre middlewares are executed
 
@@ -607,4 +607,37 @@ tourSchema.pre('save', function (next) {
  console.log(doc);
  next();
  });
+```
+
+#### Query Middleware
+
+- Middleware (also called pre and post hooks) are functions which are passed control during execution of asynchronous functions. Middleware is specified on the schema level and is useful for writing plugins.
+- Allows us to run functions before or after certain query is executed.
+- `this` keyword will point on the current query
+
+##### pre-find Middleware
+
+```
+// tourSchema.pre('find', function (next) {
+//   this.find({ secretTour: { $ne: true } });
+//   next();
+// });
+
+/^find/ - all strings that start with find
+tourSchema.pre(/^find/, function (next) {
+  this.find({ secretTour: { $ne: true } });
+  this.start = Date.now();
+  next();
+});
+```
+
+##### post-find middleware
+
+```
+tourSchema.post(/^find/, function (docs, next) {
+  console.log(`Query took ${Date.now() - this.start} milliseconds`);
+  console.log(docs);
+
+  next();
+});
 ```

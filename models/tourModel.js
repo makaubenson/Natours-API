@@ -56,6 +56,10 @@ const tourSchema = new mongoose.Schema(
       select: false,
     },
     startDates: [Date],
+    secretTour: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     toJSON: { virtuals: true },
@@ -91,6 +95,30 @@ tourSchema.pre('save', function (next) {
 //   console.log(doc);
 //   next();
 // });
+
+//Query Middleware
+//this keyword will point on the current query
+
+//pre-find Middleware
+// tourSchema.pre('find', function (next) {
+//   this.find({ secretTour: { $ne: true } });
+//   next();
+// });
+
+///^find/ - all strings that start with find
+tourSchema.pre(/^find/, function (next) {
+  this.find({ secretTour: { $ne: true } });
+  this.start = Date.now();
+  next();
+});
+
+// post-find middleware
+tourSchema.post(/^find/, function (docs, next) {
+  console.log(`Query took ${Date.now() - this.start} milliseconds`);
+  console.log(docs);
+
+  next();
+});
 
 //Create a model out of the schema above.
 const Tour = mongoose.model('Tour', tourSchema);
