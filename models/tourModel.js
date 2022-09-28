@@ -120,6 +120,13 @@ tourSchema.post(/^find/, function (docs, next) {
   next();
 });
 
+// AGGREGATION MIDDLEWARE
+// this keyword is going to point at the aggregation object
+tourSchema.pre('aggregate', function (next) {
+  this.pipeline().unshift({ $match: { secretTour: { $ne: true } } });
+  console.log(this.pipeline());
+  next();
+});
 //Create a model out of the schema above.
 const Tour = mongoose.model('Tour', tourSchema);
 

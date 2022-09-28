@@ -641,3 +641,18 @@ tourSchema.post(/^find/, function (docs, next) {
   next();
 });
 ```
+
+#### Aggregation Middleware
+
+- Aggregate middleware executes when you call exec() on an aggregate object.
+- Aggregation middleware is a natural complement to query middleware, it lets you apply a lot of the use cases for hooks like pre('find') and post('updateOne') to aggregation.
+- It allows us to add hooks before or after an aggregation happens.
+- `this` keyword is going to point at the aggregation object
+
+```
+tourSchema.pre('aggregate', function (next) {
+  this.pipeline().unshift({ $match: { secretTour: { $ne: true } } });
+  console.log(this.pipeline());
+  next();
+});
+```
