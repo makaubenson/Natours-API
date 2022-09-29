@@ -39,7 +39,7 @@ exports.aliasTopTours = (req, res, next) => {
 };
 
 //Handlers
-exports.getAllTours = catchAsync(async (req, res) => {
+exports.getAllTours = catchAsync(async (req, res, next) => {
   // console.log(req.query, 'BENSON');
   //EXECUTE QUERY
   const features = new APIFeatures(Tour.find(), req.query)
@@ -62,7 +62,7 @@ exports.getAllTours = catchAsync(async (req, res) => {
   });
 });
 
-exports.getTour = catchAsync(async (req, res) => {
+exports.getTour = catchAsync(async (req, res, next) => {
   // console.log(req.params.id);
   const tour = await Tour.findById(req.params.id);
   //Tour.findById(req.params.id) would work the same as Tour.findOne({_id:req.params.id})
@@ -74,7 +74,7 @@ exports.getTour = catchAsync(async (req, res) => {
   });
 });
 
-exports.createTour = catchAsync(async (req, res) => {
+exports.createTour = catchAsync(async (req, res, next) => {
   const newTour = await Tour.create(req.body);
 
   res.status(201).json({
@@ -85,7 +85,7 @@ exports.createTour = catchAsync(async (req, res) => {
   });
 });
 
-exports.updateTour = catchAsync(async (req, res) => {
+exports.updateTour = catchAsync(async (req, res, next) => {
   const tour = await Tour.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true,
@@ -99,7 +99,7 @@ exports.updateTour = catchAsync(async (req, res) => {
   });
 });
 
-exports.deleteTour = catchAsync(async (req, res) => {
+exports.deleteTour = catchAsync(async (req, res, next) => {
   await Tour.findByIdAndDelete(req.params.id);
 
   res.status(204).json({
@@ -109,7 +109,7 @@ exports.deleteTour = catchAsync(async (req, res) => {
 });
 
 //aggregation pipeline use case
-exports.getTourStats = catchAsync(async (req, res) => {
+exports.getTourStats = catchAsync(async (req, res, next) => {
   const stats = await Tour.aggregate([
     //match stage
     {
