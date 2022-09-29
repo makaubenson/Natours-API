@@ -663,7 +663,7 @@ tourSchema.pre('aggregate', function (next) {
 
 - ` If we parse an argument into next(), express automatically knows that the argument is an error`
 
-#### Global Error handlind middleware
+#### Global Error handling middleware
 
 - To define error handling middleware,all we need it to give it 4 arguments (`error, request, response, next`)
 
@@ -690,10 +690,3 @@ message: err.message,
 ```
 
 - `console.log(err.stack);` - shows where the error happened
-
-
-
-
-
-
-
