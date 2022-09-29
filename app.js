@@ -1,6 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
-
+const AppError = require('./utils/appError');
 const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
 
@@ -39,16 +39,18 @@ app.all('*', (req, res, next) => {
   // });
 
   // create error
-  const err = new Error(`Can't find ${req.originalUrl} on this server`);
-  err.status = 'fail';
-  err.statusCode = 404;
+  // const err = new Error(`Can't find ${req.originalUrl} on this server`);
+  // err.status = 'fail';
+  // err.statusCode = 404;
+  // next(err); //pass the error to skip all other middlewares and go to the global error handling middleware
 
-  next(err); //pass the error to skip all other middlewares and go to the global error handling middleware
+  next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
 
 //Global Error handlind middleware
 // To define error handling middleware,all we need it to give it 4 arguments
 app.use((err, req, res, next) => {
+  console.log(err.stack); //shows where the error happened
   err.statusCode = err.statusCode || 500;
   err.status = err.status || 'error';
 

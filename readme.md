@@ -686,3 +686,5 @@ message: err.message,
 
   next(err);
 ```
+
+- `console.log(err.stack);` - shows where the error happened
