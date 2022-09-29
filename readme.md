@@ -656,3 +656,33 @@ tourSchema.pre('aggregate', function (next) {
   next();
 });
 ```
+
+### Error Handling using Global Error Middleware
+
+- ` If we parse an argument into next(), express automatically knows that the argument is an error`
+
+#### Global Error handlind middleware
+
+- To define error handling middleware,all we need it to give it 4 arguments (`error, request, response, next`)
+
+```
+app.use((err, req, res, next) => {
+err.statusCode = err.statusCode || 500;
+err.status = err.status || 'error';
+
+res.status(err.statusCode).json({
+status: err.status,
+message: err.message,
+});
+});
+```
+
+- then for catching the error in any route , create the error like below
+
+```
+  const err = new Error(`Can't find ${req.originalUrl} on this server`);
+  err.status = 'fail';
+  err.statusCode = 404;
+
+  next(err);
+```

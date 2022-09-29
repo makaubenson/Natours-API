@@ -32,10 +32,29 @@ app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
 
 //handling non-existent routes (should be the last after all other routes handlers)
-app.all('*', function (req, res, next) {
-  res.status(404).json({
-    status: 'fail',
-    message: `Can't find ${req.originalUrl} on this server`,
+app.all('*', (req, res, next) => {
+  // res.status(404).json({
+  //   status: 'fail',
+  //   message: `Can't find ${req.originalUrl} on this server`,
+  // });
+
+  // create error
+  const err = new Error(`Can't find ${req.originalUrl} on this server`);
+  err.status = 'fail';
+  err.statusCode = 404;
+
+  next(err); //pass the error to skip all other middlewares and go to the global error handling middleware
+});
+
+//Global Error handlind middleware
+// To define error handling middleware,all we need it to give it 4 arguments
+app.use((err, req, res, next) => {
+  err.statusCode = err.statusCode || 500;
+  err.status = err.status || 'error';
+
+  res.status(err.statusCode).json({
+    status: err.status,
+    message: err.message,
   });
 });
 
