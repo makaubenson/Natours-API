@@ -26,10 +26,17 @@ mongoose
   .then(() => {
     // console.log(con.connections);
     console.log('DB Connection Successful');
-  })
-  .catch((err) => console.log('ERROR', err));
+  });
 
 const port = process.env.PORT || 8000;
 app.listen(port, () => {
   console.log(`App running on port ${port}`);
+});
+
+//handling rejected promises globally
+process.on('unhandledRejection', (err) => {
+  console.log(err.name, err.message);
+  console.log('UNHANDLED REJECTION!!!, Shutting Down');
+  //shutdown our app
+  process.exit(1);
 });
