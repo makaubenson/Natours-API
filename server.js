@@ -35,10 +35,21 @@ const server = app.listen(port, () => {
 
 //handling rejected promises globally
 process.on('unhandledRejection', (err) => {
-  console.log(err.name, err.message);
   console.log('UNHANDLED REJECTION!!!, Shutting Down');
+  console.log(err.name, err.message);
   server.close(() => {
     //shutdown our app
-    process.exit(1);
+    process.exit(1); // for rejected promises, this step is optional
   });
 });
+
+//handling uncaught exceptions
+process.on('uncaughtException', (err) => {
+  console.log('UNCAUGHT EXCEPTION!!!, Shutting Down');
+  console.log(err.name, err.message);
+  server.close(() => {
+    //shutdown our app
+    process.exit(1); // this step is a must for uncaught exceptions
+  });
+});
+console.log(x);
