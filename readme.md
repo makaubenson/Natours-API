@@ -663,7 +663,7 @@ tourSchema.pre('aggregate', function (next) {
 
 - ` If we parse an argument into next(), express automatically knows that the argument is an error`
 
-#### Global Error handling middleware
+#### Global Error Handling Middleware
 
 - To define error handling middleware,all we need it to give it 4 arguments (`error, request, response, next`)
 
@@ -695,15 +695,8 @@ message: err.message,
 
 - JWT, or JSON Web Token, is an open standard used to share security information between two parties — a client and a server. Each JWT contains encoded JSON objects, including a set of claims. JWTs are signed using a cryptographic algorithm to ensure that the claims cannot be altered after the token is issued
 
-
 ![jwt](https://user-images.githubusercontent.com/59168713/193330488-686fe8a8-62c4-4dff-bbc8-5f6be586f613.png)
 
 ![auth1](https://user-images.githubusercontent.com/59168713/193330510-955fba75-1a0b-4a95-9e4c-56bafc2b32ca.png)
 
 ![jwt2](https://user-images.githubusercontent.com/59168713/193330540-625bfdba-16ba-49c7-ae43-fe52ddd9a377.png)
-
-
-
-
-
-
