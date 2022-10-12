@@ -7,7 +7,7 @@ const userRouter = require('./routes/userRoutes');
 
 const app = express();
 
-// 1) Middlewares
+// 1) Middleware
 // console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
@@ -25,7 +25,8 @@ app.use(express.static(`${__dirname}/public`)); //serving static files - middlew
 
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
-  next(); //call next middleware in the callstack
+  // console.log(req.headers);
+  next(); //call next middleware in the call stack
 });
 
 //3) Routes
@@ -48,7 +49,7 @@ app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
 
-//Global Error handlind middleware
+//Global Error handling middleware
 // To define error handling middleware,all we need it to give it 4 arguments
 app.use(globalErrorHandler);
 
