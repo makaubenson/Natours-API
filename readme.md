@@ -708,3 +708,7 @@ message: err.message,
 ![auth1](https://user-images.githubusercontent.com/59168713/193330510-955fba75-1a0b-4a95-9e4c-56bafc2b32ca.png)
 
 ![jwt2](https://user-images.githubusercontent.com/59168713/193330540-625bfdba-16ba-49c7-ae43-fe52ddd9a377.png)
+
+### Passport
+
+- This module lets you authenticate endpoints using a JSON web token. It is intended to be used to secure RESTful endpoints without sessions.
