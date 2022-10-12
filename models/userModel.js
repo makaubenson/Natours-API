@@ -50,7 +50,7 @@ userSchema.pre('save', async function (next) {
   //hashing means adding a random string to the password so that similar passwords don't match
   this.password = await bcrypt.hash(this.password, 12);
 
-  //delete passwordConfirm field
+  //delete passwordConfirm field not to be persisted in DB
   this.passwordConfirm = undefined;
 
   next();

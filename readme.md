@@ -691,9 +691,17 @@ message: err.message,
 
 - `console.log(err.stack);` - shows where the error happened
 
+## Password Salting and Hashing
+
+- Password salting adds a random string to a password in way that even if a 2 different users enters similar passwords, they won't look similar
+
+- Password Hashing is basically encryption.
+
 ## How JSON WEB TOKEN (JWT) Authentication Works
 
-- JWT, or JSON Web Token, is an open standard used to share security information between two parties — a client and a server. Each JWT contains encoded JSON objects, including a set of claims. JWTs are signed using a cryptographic algorithm to ensure that the claims cannot be altered after the token is issued
+- JWT, or JSON Web Token, is an open standard used to share security information between two parties — a client and a server. Each JWT contains encoded JSON objects, including a set of claims. JWTs are signed using a cryptographic algorithm to ensure that the claims cannot be altered after the token is issued.
+
+- REST APIS should be stateless. No state should be saved in a server while a request is being sent, processed and responded to.
 
 ![jwt](https://user-images.githubusercontent.com/59168713/193330488-686fe8a8-62c4-4dff-bbc8-5f6be586f613.png)
 
