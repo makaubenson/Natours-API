@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Please provide a password'],
     minLength: 8, //have min of 8 chars for a password
-    select: false,
+    select: false, // will automatically never show up in any output
   },
   passwordConfirm: {
     type: String,
@@ -56,12 +56,14 @@ userSchema.pre('save', async function (next) {
   next();
 });
 
-//create instance method. - Method that is going to be available on all documents of certain collection
+//create Instance Method. - Method that is going to be available on all DOCUMENTS of certain collection
 userSchema.methods.correctPassword = async function (
   candidatePassword,
   userPassword
 ) {
-  return await bcrypt.compare(candidatePassword, userPassword);
+  //candidatePassword is the original password - NOT HASHED
+  // userPassword is the hashed password
+  return await bcrypt.compare(candidatePassword, userPassword); //returns true or false
 };
 
 //Create a user Model
