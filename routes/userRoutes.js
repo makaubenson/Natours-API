@@ -4,7 +4,7 @@ const authController = require('../controllers/authController');
 
 const router = express.Router();
 
-//doesnt follow REST architecture
+//doesn't follow REST architecture
 router.post('/signup', authController.signup);
 router.post('/login', authController.login);
 
