@@ -38,11 +38,16 @@ const userSchema = new mongoose.Schema({
   },
 });
 
+//password encryption
+
+//between moment we receive data and saving it to DB - pre
 userSchema.pre('save', async function (next) {
   //only run this function if password was modified
   if (!this.isModified('password')) return next();
 
   //hash the password with cost of 12
+  //bcrypt will salt then hash password.
+  //hashing means adding a random string to the password so that similar passwords don't match
   this.password = await bcrypt.hash(this.password, 12);
 
   //delete passwordConfirm field
