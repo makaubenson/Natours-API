@@ -713,6 +713,8 @@ message: err.message,
 
 - This module lets you authenticate endpoints using a JSON web token. It is intended to be used to secure RESTful endpoints without sessions.
 
-## protecting routes
+## Protecting Routes
 
 - To protect routes, we need a middleware that will run before the route handlers
+
+14
