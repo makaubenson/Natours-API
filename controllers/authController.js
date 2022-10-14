@@ -78,11 +78,26 @@ exports.protect = catchAsync(async (req, res, next) => {
   }
   //2) Token Verification
   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
-  console.log(decoded);
+  // console.log(decoded);
 
   // 3)Check if user still exists
+  const freshUser = await User.findById(decoded.id);
+  if (!freshUser) {
+    return next(
+      new AppError('The Token belonging to this user does no longer exist', 401)
+    );
+  }
+
   // 4) Check if user changed password after the token was issued
+  if (freshUser.changedPasswordAfter(decoded.iat)) {
+    return next(
+      new AppError('User Recently changed Password!, Please Log In Again', 401)
+    );
+  }
 
   //only when all the above steps are okay that next middleware will be called
+  // put entire user data on request
+  req.user = freshUser;
+  //grant access to access route
   next();
 });
