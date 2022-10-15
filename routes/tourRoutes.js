@@ -41,13 +41,4 @@ router
     tourController.deleteTour
   );
 
-//Method 2
-// router.route('/').get(getAllTours).post(createTour);
-// router
-//   .route('/:id')
-//   .get(getTour)
-//   .post(createTour)
-//   .patch(updateTour)
-//   .delete(deleteTour);
-
 module.exports = router;
