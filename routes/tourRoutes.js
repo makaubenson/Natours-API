@@ -35,7 +35,11 @@ router
   .get(tourController.getTour)
   .post(tourController.createTour)
   .patch(tourController.updateTour)
-  .delete(tourController.deleteTour);
+  .delete(
+    authController.protect,
+    // authController.restrictTo('admin'),
+    tourController.deleteTour
+  );
 
 //Method 2
 // router.route('/').get(getAllTours).post(createTour);

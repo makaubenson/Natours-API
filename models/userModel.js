@@ -19,6 +19,11 @@ const userSchema = new mongoose.Schema({
     //will store path to photo in the file system
     type: String,
   },
+  role: {
+    type: String,
+    enum: ['user', 'guide', 'lead-guide', 'admin'],
+    default: 'user',
+  },
   password: {
     type: String,
     required: [true, 'Please provide a password'],
