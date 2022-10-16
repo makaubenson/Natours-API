@@ -715,6 +715,4 @@ message: err.message,
 
 ## Protecting Routes
 
-- To protect routes, we need a middleware that will run before the route handlers
-
-14
+- To protect routes, we need a middleware that will run before the route handlers. 
