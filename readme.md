@@ -1,4 +1,4 @@
-# Building Natuors API
+# Building Natuors API With Node.js
 
 ## Express.js
 
@@ -712,7 +712,3 @@ message: err.message,
 ### Passport
 
 - This module lets you authenticate endpoints using a JSON web token. It is intended to be used to secure RESTful endpoints without sessions.
-
-## Protecting Routes
-
-- To protect routes, we need a middleware that will run before the route handlers
