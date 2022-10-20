@@ -717,3 +717,6 @@ message: err.message,
 
 ![security](https://user-images.githubusercontent.com/59168713/196930661-b9915a75-2ca0-43fc-84df-34b75c0da9c5.png)
 
+### Cookies
+
+- A cookie is a small piece of text that a server can send to a client and then the client stores it and send it along with future requests to the same server
