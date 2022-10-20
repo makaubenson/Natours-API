@@ -742,3 +742,25 @@ app.use(mongoSanitize());
 ```
 app.use(xss());
 ```
+
+### Preventing Parameter Pollution
+
+- `const hpp = require('hpp'); //http parameter pollution`
+- prevent parameter pollution
+
+```
+app.use(
+  hpp({
+    whitelist: [
+      'duration',
+      'ratingsQuantity',
+      'ratingsAverage',
+      'maxGroupSize',
+      'difficulty',
+      'price',
+    ],
+  })
+);
+```
+
+- It clears up query string
