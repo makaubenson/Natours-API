@@ -720,3 +720,7 @@ message: err.message,
 ### Cookies
 
 - A cookie is a small piece of text that a server can send to a client and then the client stores it and send it along with future requests to the same server
+
+### Rate Limiting
+
+- prevent same IP from making many requests into API thus preventing attacks such as DOS and Brute Force attacks
