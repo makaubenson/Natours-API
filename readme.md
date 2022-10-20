@@ -724,3 +724,21 @@ message: err.message,
 ### Rate Limiting
 
 - prevent same IP from making many requests into API thus preventing attacks such as DOS and Brute Force attacks
+- `const rateLimit = require('express-rate-limit'); //rate limiting`
+
+### Data Sanitization
+
+- cleaning all data that comes to app from malicious code. Code that is trying to attack our application
+
+- Data Sanitization against NoSQL query injection
+
+```
+app.use(mongoSanitize());
+```
+
+- Data sanitization against XSS
+- cleans any user input from malicious html code with some js attached to it
+
+```
+app.use(xss());
+```
