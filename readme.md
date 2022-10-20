@@ -712,3 +712,8 @@ message: err.message,
 ### Passport
 
 - This module lets you authenticate endpoints using a JSON web token. It is intended to be used to secure RESTful endpoints without sessions.
+
+### Security Best Practices
+
+![security](https://user-images.githubusercontent.com/59168713/196930661-b9915a75-2ca0-43fc-84df-34b75c0da9c5.png)
+
