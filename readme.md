@@ -770,3 +770,22 @@ app.use(
 ### MONGODB Data Modelling
 
 - Data Modelling is the process of taking unstructured data generated from a real world scenario and the structure it into a logical data model in a database. We do that according to a set of criteria.
+- 
+![data1](https://user-images.githubusercontent.com/59168713/197115870-d621d66d-6b7b-4242-892e-2f775fceb9fa.png)
+
+![data2](https://user-images.githubusercontent.com/59168713/197115880-97be30e0-a62a-4e3c-a02c-6a44b782f16a.png)
+
+![data3](https://user-images.githubusercontent.com/59168713/197115896-fff82d06-1012-4750-b162-5505837936b0.png)
+
+![data4](https://user-images.githubusercontent.com/59168713/197115951-5927b54e-d1d7-49b2-9b1d-ec1cab70c0e0.png)
+
+![data5](https://user-images.githubusercontent.com/59168713/197115986-fe0e8375-5817-4517-adb3-86b7927ec98d.png)
+
+![data6](https://user-images.githubusercontent.com/59168713/197116011-145ec770-ac65-40f3-b0df-4ba6aa91c1e0.png)
+
+
+
+
+
+
+
