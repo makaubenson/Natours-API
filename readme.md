@@ -764,3 +764,9 @@ app.use(
 ```
 
 - It clears up query string
+
+## Data Modelling and Advanced Mongoose
+
+### MONGODB Data Modelling
+
+- Data Modelling is the process of taking unstructured data generated from a real world scenario and the structure it into a logical data model in a database. We do that according to a set of criteria.
