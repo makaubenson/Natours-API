@@ -783,3 +783,7 @@ app.use(
 ![data6](https://user-images.githubusercontent.com/59168713/197116011-145ec770-ac65-40f3-b0df-4ba6aa91c1e0.png)
 
 ### The Natours Data Model
+
+![data1](https://user-images.githubusercontent.com/59168713/197358995-3979de2a-d8e7-477e-bc2a-36eaca7ad57b.png)
+
+
