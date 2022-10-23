@@ -7,6 +7,7 @@ const router = express.Router({ mergeParams: true });
 //POST /tour/23gt4g/reviews
 //GET /tour/23gt4g/reviews
 //POST /reviews
+
 router
   .route('/')
   .get(reviewController.getAllReviews)
@@ -15,5 +16,7 @@ router
     authController.restrictTo('user'),
     reviewController.createReview
   );
+
+router.route('/:id').delete(reviewController.deleteReview);
 
 module.exports = router;
