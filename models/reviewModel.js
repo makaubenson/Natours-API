@@ -26,13 +26,26 @@ const reviewSchema = new mongoose.Schema(
       required: [true, 'Review must belong to a user'],
     },
   },
-  //virtual properties: makes sure that if we have a field that isnt stored in DB
+  //virtual properties: makes sure that if we have a field that isn't stored in DB
   //   but calculated using some other value, we want it to show on the output
   {
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
   }
 );
+
+//using populate
+reviewSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'tour',
+    select: 'name',
+  }).populate({
+    path: 'user',
+    select: 'name photo',
+  });
+
+  next();
+});
 
 const Review = mongoose.model('Review', reviewSchema);
 
