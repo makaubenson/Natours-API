@@ -786,4 +786,6 @@ app.use(
 
 ![data1](https://user-images.githubusercontent.com/59168713/197358995-3979de2a-d8e7-477e-bc2a-36eaca7ad57b.png)
 
+### /me endpoint
 
+- Endpoint where user can retrieve their own information.
