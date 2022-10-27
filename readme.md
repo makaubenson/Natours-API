@@ -794,3 +794,4 @@ app.use(
 # Published API Documentation
 
 - `https://documenter.getpostman.com/view/16390985/2s8YCXMxQe#159187e6-63c5-4b18-a07d-7c5a46bf1e08`
+- This api documentation feature exists in postman to help devs document their APIs
