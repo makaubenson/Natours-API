@@ -1,4 +1,4 @@
-# Building Natuors API With Node.js
+# Building Natuors API With Node.js and Express
 
 ## Express.js
 
