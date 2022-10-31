@@ -798,5 +798,4 @@ app.use(
 
 # PUG
 - Pugs is a compiler and interpreter for the Raku programming language.
-- Once Node and npm are installed on your system, you can install the pug-cli package like so: `npm i -g pug-cli`
-- To check version : `pug --version`
+
