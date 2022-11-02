@@ -767,7 +767,7 @@ app.use(
 
 ## Data Modelling and Advanced Mongoose
 
-### MONGODB Data Modelling
+### MongoDB Data Modelling
 
 - Data Modelling is the process of taking unstructured data generated from a real world scenario and the structure it into a logical data model in a database. We do that according to a set of criteria.
 
@@ -792,7 +792,7 @@ app.use(
 - Endpoint where user can retrieve their own information.
 
 # API Documentation
-
+- Below is the published API for Natours
 - `https://documenter.getpostman.com/view/16390985/2s8YCXMxQe#159187e6-63c5-4b18-a07d-7c5a46bf1e08`
 - This api documentation feature exists in postman to help devs document their APIs
 
