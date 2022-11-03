@@ -75,18 +75,7 @@ app.use('/api/v1/reviews', reviewRouter);
 
 //handling non-existent routes (should be the last after all other routes handlers)
 app.all('*', (req, res, next) => {
-  // res.status(404).json({
-  //   status: 'fail',
-  //   message: `Can't find ${req.originalUrl} on this server`,
-  // });
-
-  // create error
-  // const err = new Error(`Can't find ${req.originalUrl} on this server`);
-  // err.status = 'fail';
-  // err.statusCode = 404;
-  // next(err); //pass the error to skip all other middlewares and go to the global error handling middleware
-
-  next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
+   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
 
 //Global Error handling middleware
