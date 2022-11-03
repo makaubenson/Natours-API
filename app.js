@@ -61,13 +61,6 @@ app.use(
 //serving static files
 app.use(express.static(`${__dirname}/public`)); //serving static files - middleware
 
-//Creating our own middleware
-// app.use((req, res, next) => {
-//   console.log('Hello from the middleware!!');
-//   // We need to call next() to avoid Request-Response cycle being stuck
-//   next();
-// });
-
 // Testing Middleware
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
