@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit'); //rate limiting
@@ -14,7 +15,15 @@ const reviewRouter = require('./routes/reviewRoutes');
 
 const app = express();
 
-// 1)Global Middlewares
+//setup pug engine
+app.set('view engine','pug');//express automatically supports pug
+app.set('views',path.join(__dirname,'views'));
+
+// 1)Global Middleware
+
+//serving static files
+// app.use(express.static(`${__dirname}/public`)); //serving static files - middleware
+app.use(express.static(path.join(__dirname,'public'))); 
 
 //Set Security HTTP Headers
 app.use(helmet());
@@ -58,8 +67,6 @@ app.use(
   })
 );
 
-//serving static files
-app.use(express.static(`${__dirname}/public`)); //serving static files - middleware
 
 // Testing Middleware
 app.use((req, res, next) => {
@@ -69,6 +76,9 @@ app.use((req, res, next) => {
 });
 
 //3) Routes
+app.get('/',(req,res) => {
+  res.status(200).render('base')
+})
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reviews', reviewRouter);

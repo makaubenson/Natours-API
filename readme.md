@@ -797,3 +797,4 @@ app.use(
 - This api documentation feature exists in postman to help devs document their APIs
 
 ## PUG 
+- Its a template engine which is commonly used with express.
