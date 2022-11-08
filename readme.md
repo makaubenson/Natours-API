@@ -798,3 +798,4 @@ app.use(
 
 ## PUG 
 - Its a template engine which is commonly used with express.
+- Its white space sensitive
