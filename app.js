@@ -77,7 +77,11 @@ app.use((req, res, next) => {
 
 //3) Routes
 app.get('/',(req,res) => {
-  res.status(200).render('base')
+  res.status(200).render('base', {
+    // these values below are called locals in pug
+    tour: 'The Forest Hiker',
+    user: 'Benson'
+  })
 });
 
 app.use('/api/v1/tours', tourRouter);

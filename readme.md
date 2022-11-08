@@ -798,4 +798,7 @@ app.use(
 
 ## PUG 
 - Its a template engine which is commonly used with express.
-- Its white space sensitive
+- Its white space sensitive.
+-  Types of comments in pug
+- ` // h1 The Park Camper` - The comment is seen in dev tools
+- ` //- h1 The Park Camper` - Comment isnt seen in dev tools
