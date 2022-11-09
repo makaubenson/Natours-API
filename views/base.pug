@@ -1,7 +1,7 @@
 doctype html 
 html 
     head
-        title Natours 
+        title Natours #{tour}
         link(rel='stylesheet' href='css/style.css')
         link(rel='shortcut icon' type='image/png' href='img/favicon.png')
 
@@ -11,9 +11,10 @@ html
         h2= user.toUpperCase()
         //- h1 The Park Camper
 
-        //- unbuffered code
+        //- unbuffered code - code that doesn't add something to output
         - const x = 9
-          //- buffered code
+
+          //- buffered code - code that adds something to output
         h2= 2 * x
         
         p This is just some text
