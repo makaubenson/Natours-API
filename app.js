@@ -28,21 +28,8 @@ app.use(express.static(path.join(__dirname,'public')));
 
 //Set Security HTTP Headers
 
-// app.use(helmet());
-app.use(
-  helmet({
-      crossOriginEmbedderPolicy: false,
-      crossOriginResourcePolicy: {
-          allowOrigins: ['*']
-      },
-      contentSecurityPolicy: {
-          directives: {
-              defaultSrc: ['*'],
-              scriptSrc: ["* data: 'unsafe-eval' 'unsafe-inline' blob:"]
-          }
-      }
-  })
-)
+app.use(helmet());
+
 
 //Development Logging
 // console.log(process.env.NODE_ENV);
