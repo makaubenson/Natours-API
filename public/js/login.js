@@ -1,5 +1,5 @@
 const login = async (email,password) => {
-//to htpp request for login, we use axios library
+//to send http request for login, we use axios library
 //axios returns a promise
 console.log(email,password)
 try {
@@ -7,15 +7,14 @@ try {
         method: 'POST',
         url:'http://127.0.0.1:3000/api/v1/users/login', //login endpoint
         data: {
-            email,
-            password
+            email:email,
+            password:password
         }
     });
     console.log(res);
 } catch(err) {
-    console.log(err.res);
+    console.log(err.response.data);
 }
-
 };
 
 document.querySelector('.form').addEventListener('submit',(e) => {

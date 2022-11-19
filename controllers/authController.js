@@ -96,6 +96,8 @@ exports.protect = catchAsync(async (req, res, next) => {
     //'Bearer gdjejhhnbdcghgbnadbvsaghxgh'
     //split bearer and the token with space
     token = req.headers.authorization.split(' ')[1];
+  }else if(req.cookies.jwt){
+    token = req.token.jwt;
   }
   // console.log(token);
   if (!token) {

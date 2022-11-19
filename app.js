@@ -6,6 +6,7 @@ const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp'); //http parameter pollution
+const cookieParser= require('cookie-parser'); //parse cookies to every request
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
@@ -27,9 +28,7 @@ app.set('views',path.join(__dirname,'views'));
 app.use(express.static(path.join(__dirname,'public'))); 
 
 //Set Security HTTP Headers
-
 app.use(helmet());
-
 
 //Development Logging
 // console.log(process.env.NODE_ENV);
@@ -47,8 +46,11 @@ const limiter = rateLimit({
 // limiter created above is a middleware
 app.use('/api', limiter); // this will be effected to all routes that begin with /api
 
-//Body Parser: reading data from body into req.body
+//Body Parser: parses data from body into req.body
 app.use(express.json({ limit: '10kb' }));
+
+//cookie parser: parses data from cookies
+app.use(cookieParser())
 
 //Data Sanitization against NoSQL query injection
 app.use(mongoSanitize());
@@ -70,11 +72,10 @@ app.use(
   })
 );
 
-
 // Testing Middleware
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
-  // console.log(req.headers);
+  console.log(req.cookies);
   next(); //call next middleware in the call stack
 });
 
