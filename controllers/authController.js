@@ -126,24 +126,38 @@ exports.protect = catchAsync(async (req, res, next) => {
 
   //only when all the above steps are okay that next middleware will be called
   // put entire user data on request
-  req.user = currentUser;
   //grant access to access route
+  req.user = currentUser;
   next();
 });
 
-// exports.restrictTo = (...roles) => {
-//   return (req, res, next) => {
-//     console.log(req.user.role);
-//     // roles ['admin', 'lead-guide']. role='user'
-//     if (!roles.includes(req.user.role)) {
-//       return next(
-//         new AppError('You do not have permission to perform this action', 403)
-//       );
-//     }
+//Only for rendered pages, no errors
+exports.isLoggedIn = catchAsync(async (req, res, next) => {
+  // 1) Getting Token and Check if it exists
+ if(req.cookies.jwt){
+  //2) Token Verification
+  const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET);
 
-//     next();
-//   };
-// };
+  // 3)Check if user still exists
+  const currentUser = await User.findById(decoded.id);
+  if (!currentUser) {
+    return next();
+  }
+
+  // 4) Check if user changed password after the token was issued
+  if (currentUser.changedPasswordAfter(decoded.iat)) {
+    return next();
+  }
+
+//only when all the above steps are okay that next middleware will be called
+// put entire user data on request
+//THERE IS A LOGGED IN USER
+res.locals.user = currentUser;
+return next();
+}
+next();
+});
+
 
 exports.restrictTo = function (...roles) {
   return (req, res, next) => {
