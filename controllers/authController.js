@@ -27,12 +27,12 @@ const createSendToken = (user, statusCode, res) => {
   if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
 
   //create and send a cookie
-  res.cookie('jwt', token, cookieOptions);
+  cookie('jwt', token, cookieOptions);
 
   //remove password from output
   user.password = undefined;
 
-  res.status(statusCode).json({
+  status(statusCode).json({
     status: 'success',
     token,
     data: {
@@ -50,18 +50,6 @@ exports.signup = catchAsync(async (req, res, next) => {
     passwordConfirm: req.body.passwordConfirm,
   });
 
-  // const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
-  //   expiresIn: process.env.JWT_EXPIRES_IN,
-  // });
-
-  // const token = signToken(newUser._id);
-  // res.status(201).json({
-  //   status: 'success',
-  //   token,
-  //   data: {
-  //     user: newUser,
-  //   },
-  // });
   createSendToken(newUser, 201, res);
 });
 
@@ -152,7 +140,7 @@ exports.isLoggedIn = catchAsync(async (req, res, next) => {
 //only when all the above steps are okay that next middleware will be called
 // put entire user data on request
 //THERE IS A LOGGED IN USER
-res.locals.user = currentUser;
+locals.user = currentUser;
 return next();
 }
 next();
@@ -198,7 +186,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
       text: message,
     });
 
-    res.status(200).json({
+    status(200).json({
       status: 'success',
       message: 'Token sent to email!',
     });
