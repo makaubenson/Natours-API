@@ -1,7 +1,5 @@
 /* eslint-disable */
-const locations = JSON.parse(document.getElementById('map').dataset.locations);
-console.log(locations);
-
+export const displayMap = (locations) =>{
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFrYXViZW5zb24iLCJhIjoiY2xhZHM4MWF0MGxnajNwb3kydnl5bTg5MyJ9.-IrnMRVYrDm4bxTc5KBawA';
 
 
@@ -45,3 +43,5 @@ map.fitBounds(bounds, {
     }
    
 });
+    
+}

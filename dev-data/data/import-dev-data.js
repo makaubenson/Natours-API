@@ -1,9 +1,9 @@
 const fs = require('fs');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const Tour = require('../../models/tourModel');
-const Review = require('../../models/reviewModel');
-const User = require('../../models/userModel');
+const Tour = require('./../../models/tourModel');
+const Review = require('./../../models/reviewModel');
+const User = require('./../../models/userModel');
 
 dotenv.config({ path: './config.env' });
 
@@ -16,7 +16,7 @@ mongoose
   .connect(DB, {
     useNewUrlParser: true,
     useCreateIndex: true,
-    useFindAndModify: false,
+    useFindAndModify: false
   })
   .then(() => console.log('DB connection successful!'));
 

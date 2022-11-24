@@ -6,11 +6,15 @@
   "scripts": {
     "start": "nodemon server.js",
     "start:prod": "NODE_ENV=production nodemon server.js",
-    "debug": "ndb server.js"
+    "debug": "ndb server.js",
+    "watch:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js",
+    "build:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js"
   },
   "author": "Benson Makau",
   "license": "MIT",
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "axios": "^1.2.0",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.2",
@@ -40,6 +44,8 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.7",
+    "parcel": "^1.12.4",
+    "parcel-bundler": "^1.12.3",
     "prettier": "^2.7.1"
   },
   "engines": {
