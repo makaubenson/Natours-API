@@ -1,15 +1,10 @@
 const express = require('express');
-const reviewController = require('../controllers/reviewController');
-const authController = require('../controllers/authController');
+const reviewController = require('./../controllers/reviewController');
+const authController = require('./../controllers/authController');
 
 const router = express.Router({ mergeParams: true });
 
-//all routes below this line are protected
 router.use(authController.protect);
-
-//POST /tour/23gt4g/reviews
-//GET /tour/23gt4g/reviews
-//POST /reviews
 
 router
   .route('/')

@@ -1,17 +1,14 @@
 const express = require('express');
-const tourController = require('../controllers/tourController');
-const authController = require('../controllers/authController');
-const reviewRouter = require('./reviewRoutes');
+const tourController = require('./../controllers/tourController');
+const authController = require('./../controllers/authController');
+const reviewRouter = require('./../routes/reviewRoutes');
 
 const router = express.Router();
 
-//Param Middleware
 // router.param('id', tourController.checkID);
 
-//NESTED ROUTES
-// POST /tour/1342hj2/reviews
-// GET /tour/1342hj2/reviews
-// GET /tour/1342hj2/reviews/6453365
+// POST /tour/234fad4/reviews
+// GET /tour/234fad4/reviews
 
 router.use('/:tourId/reviews', reviewRouter);
 
@@ -20,7 +17,6 @@ router
   .get(tourController.aliasTopTours, tourController.getAllTours);
 
 router.route('/tour-stats').get(tourController.getTourStats);
-
 router
   .route('/monthly-plan/:year')
   .get(
@@ -36,7 +32,7 @@ router
 // /tours-within/233/center/-40,45/unit/mi
 
 router.route('/distances/:latlng/unit/:unit').get(tourController.getDistances);
-//Method 1
+
 router
   .route('/')
   .get(tourController.getAllTours)
