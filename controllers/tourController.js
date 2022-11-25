@@ -1,7 +1,49 @@
+const multer = require('multer');
+const sharp = require('sharp');//image processing library
 const Tour = require('./../models/tourModel');
 const catchAsync = require('./../utils/catchAsync');
 const factory = require('./handlerFactory');
 const AppError = require('./../utils/appError');
+
+//store image on memory as buffer
+const multerStorage = multer.memoryStorage();
+
+//multerFilter: to check if uploaded file is an image
+const multerFilter = (req,file,cb) => {
+  if(file.mimetype.startsWith('image')){
+    cb(null,true)
+  }else{
+    cb(new AppError('Not an image! Please upload only Images!!',400),false)
+  }
+}
+//configuring image uploads using multer
+const upload = multer({
+  storage: multerStorage,
+  fileFilter:multerFilter
+});
+
+exports.uploadTourImages = upload.fields([
+  {
+    name: 'imageCover',
+    maxCount:1
+  },
+  {
+    name:'images',
+    maxCount:3
+  }
+]);
+
+//upload.single('image')- upload single image (req.file)
+//upload.array('images',5)- upload multiple image(req.files)
+// upload.fields([
+//   {name: 'imageCover',maxCount:1},
+//    {name:'images',maxCount:3}
+// ]) - upload mixture of multiple and single image (req.files)
+
+exports.resizeTourImages = (req,res,next) => {
+  console.log(req.files);
+  next();
+}
 
 exports.aliasTopTours = (req, res, next) => {
   req.query.limit = '5';

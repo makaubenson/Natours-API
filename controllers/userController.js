@@ -28,7 +28,6 @@ const multerFilter = (req,file,cb) => {
     cb(new AppError('Not an image! Please upload only Images!!',400),false)
   }
 }
-
 //configuring image uploads using multer
 const upload = multer({
   storage: multerStorage,
