@@ -12394,16 +12394,16 @@ function () {
           case 3:
             res = _context2.sent;
             if (res.data.status = 'success') location.reload(true);
-            _context2.next = 11;
+            _context2.next = 10;
             break;
 
           case 7:
             _context2.prev = 7;
             _context2.t0 = _context2["catch"](0);
-            console.log(_context2.t0.response);
+            // console.log(err.response);
             (0, _alerts.showAlert)('error', 'Error logging out! Try again.');
 
-          case 11:
+          case 10:
           case "end":
             return _context2.stop();
         }
@@ -12530,29 +12530,27 @@ function () {
 
           case 3:
             session = _context.sent;
-            console.log(session); // 2) Create checkout form + charge credit card
-
-            _context.next = 7;
+            _context.next = 6;
             return stripe.redirectToCheckout({
               sessionId: session.data.session.id
             });
 
-          case 7:
-            _context.next = 13;
+          case 6:
+            _context.next = 11;
             break;
 
-          case 9:
-            _context.prev = 9;
+          case 8:
+            _context.prev = 8;
             _context.t0 = _context["catch"](0);
-            console.log(_context.t0);
+            // console.log(err);
             (0, _alerts.showAlert)('error', _context.t0);
 
-          case 13:
+          case 11:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 9]]);
+    }, _callee, null, [[0, 8]]);
   }));
 
   return function bookTour(_x) {
@@ -12938,7 +12936,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44639" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44995" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
