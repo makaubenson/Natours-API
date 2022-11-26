@@ -37,3 +37,13 @@ process.on('unhandledRejection', err => {
     process.exit(1);
   });
 });
+
+//RESPONDING TO SIGTERM SIGNAL: 
+//SIGTERM signal shutdowns apps any time they are send and thus we need to give our server
+//time to finish processing the requests at hand before responding to the signal
+process.on('SIGTERM', () =>{
+  console.log('SIGTERM RECEIVED. Shutting Down gracefully!!!');
+    server.close(() => {
+    console.log('PROCESS TERMINATED!!!')
+    })
+})
