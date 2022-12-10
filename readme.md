@@ -802,3 +802,7 @@ app.use(
 -  Types of comments in pug
 - ` // h1 The Park Camper` - The comment is seen in dev tools
 - ` //- h1 The Park Camper` - Comment isn't seen in dev tools
+
+### Hosted Versions
+- `https://web-production-c886.up.railway.app/` -Hosted in `railway.app`
+- `https://natours-api-qdk9.onrender.com/` - Hosted in `render.com`
