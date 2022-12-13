@@ -36,7 +36,7 @@
 #### Middleware and the Request-Response Cycle
 
 - In express everything is middleware.
-- Example of middlewares
+- Example of middleware
 - ![image]
 - Middleware that appears first in code, is executed before the one that appears later.
 - Order of code is important in express.
@@ -583,7 +583,7 @@ tourSchema.virtual('durationWeeks').get(function () {
 - Middleware that can act on the currently processed documents.
 - we can have middleware run before and after certain event.
 - runs only for `.save() and .create()`
-- we can have multiple pre and post `document middlewares`.
+- we can have multiple pre and post `document middleware`.
 
 ##### pre middleware: will run before an actual event
 
@@ -600,7 +600,7 @@ tourSchema.pre('save', function (next) {
 
 ##### post middleware: will run after an actual event
 
-- Executed after all pre middlewares are executed
+- Executed after all pre middleware are executed
 
 ```
  tourSchema.post('save', function (doc, next) {
@@ -792,13 +792,15 @@ app.use(
 - Endpoint where user can retrieve their own information.
 
 # API Documentation
+
 - Below is the published API for Natours
 - `https://documenter.getpostman.com/view/16390985/2s8YCXMxQe`
 - This api documentation feature exists in postman to help devs document their APIs
 
-## PUG 
+## PUG
+
 - Its a template engine which is commonly used with express.
 - Its white space sensitive.
--  Types of comments in pug
+- Types of comments in pug
 - ` // h1 The Park Camper` - The comment is seen in dev tools
 - ` //- h1 The Park Camper` - Comment isn't seen in dev tools
