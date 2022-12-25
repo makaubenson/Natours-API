@@ -808,4 +808,4 @@ app.use(
 ### Hosted Versions
 
 - `https://web-production-c886.up.railway.app/` -Hosted in `railway.app`
-- `https://natours-api-qdk9.onrender.com/` - Hosted in `render.com`
+- `https://natours-api.blinx.co.ke`
